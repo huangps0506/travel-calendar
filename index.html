@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Travel Calendar</h1>
+            <p class="subtitle">Plan your adventures</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="nav-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <h2 id="currentMonth"></h2>
+                    <button id="nextMonth" class="nav-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="weekday">Sun</div>
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
+                </div>
+                <div id="calendarDays" class="calendar-days"></div>
+            </div>
+
+            <!-- Travel Plans List -->
+            <div class="plans-section">
+                <h2>Upcoming Travels</h2>
+                <div id="travelList" class="travel-list">
+                    <p class="empty-state">No travel plans yet. Click on a date to add one!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for adding/editing travel -->
+    <div id="travelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Travel Plan</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="travelForm">
+                <div class="form-group">
+                    <label for="travelDate">Date</label>
+                    <input type="date" id="travelDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Destination</label>
+                    <input type="text" id="location" placeholder="e.g., Paris, France" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="travelType">Travel Type</label>
+                    <select id="travelType" required>
+                        <option value="">Select type...</option>
+                        <option value="vacation">🏖️ Vacation</option>
+                        <option value="business">💼 Business</option>
+                        <option value="adventure">🏔️ Adventure</option>
+                        <option value="cultural">🎭 Cultural</option>
+                        <option value="family">👨‍👩‍👧‍👦 Family Visit</option>
+                        <option value="other">✈️ Other</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="accommodation">Accommodation</label>
+                    <input type="text" id="accommodation" placeholder="Hotel name or address">
+                </div>
+
+                <div class="form-group">
+                    <label for="transportation">Transportation</label>
+                    <select id="transportation">
+                        <option value="">Select transportation...</option>
+                        <option value="flight">✈️ Flight</option>
+                        <option value="train">🚆 Train</option>
+                        <option value="car">🚗 Car</option>
+                        <option value="bus">🚌 Bus</option>
+                        <option value="ship">🚢 Ship/Ferry</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget (Optional)</label>
+                    <input type="number" id="budget" placeholder="Estimated budget" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" rows="3" placeholder="Add any additional notes..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Travel Plan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
