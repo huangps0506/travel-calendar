@@ -1,5 +1,7 @@
 # 🌍 Travel Calendar Web Application
 
+[![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://huangps0506.github.io/travel-calendar/)
+
 A beautiful, modern web application for planning and organizing your travel adventures. Click on any date in the calendar to add travel plans with detailed information.
 
 ## ✨ Features
@@ -21,6 +23,11 @@ A beautiful, modern web application for planning and organizing your travel adve
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
 
 ## 🚀 Getting Started
+
+### Deployment
+
+This project is deployed using **GitHub Pages**.
+- **Live Site**: [https://huangps0506.github.io/travel-calendar/](https://huangps0506.github.io/travel-calendar/)
 
 ### Installation
 
