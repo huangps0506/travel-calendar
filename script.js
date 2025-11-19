@@ -224,6 +224,38 @@ class TravelCalendar {
         }
     }
 
+    addToCalendar(id) {
+        const travel = this.travels.find(t => t.id === id);
+        if (!travel) return;
+
+        const startDate = new Date(travel.startDate);
+        const endDate = new Date(travel.endDate);
+        
+        // Google Calendar expects YYYYMMDD for all-day events
+        // End date is exclusive for all-day events
+        endDate.setDate(endDate.getDate() + 1);
+
+        const format = (d) => {
+            return d.toISOString().split('T')[0].replace(/-/g, '');
+        };
+        
+        const startStr = format(startDate);
+        const endStr = format(endDate);
+
+        const title = encodeURIComponent(`Trip to ${travel.location}`);
+        const details = encodeURIComponent(
+            `Type: ${travel.type}\n` +
+            `Accommodation: ${travel.accommodation || 'N/A'}\n` +
+            `Transportation: ${travel.transportation || 'N/A'}\n` +
+            `Notes: ${travel.notes || ''}`
+        );
+        const location = encodeURIComponent(travel.location);
+
+        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startStr}/${endStr}&details=${details}&location=${location}`;
+        
+        window.open(url, '_blank');
+    }
+
     renderTravelList() {
         const travelList = document.getElementById('travelList');
         
@@ -269,6 +301,7 @@ class TravelCalendar {
                     </div>
                     <div class="travel-card-actions">
                         <button class="btn-small btn-edit" onclick="calendar.openEditModal(${JSON.stringify(travel).replace(/"/g, '&quot;')})">Edit</button>
+                        <button class="btn-small btn-calendar" onclick="calendar.addToCalendar('${travel.id}')">Sync to Calendar</button>
                         <button class="btn-small btn-delete" onclick="calendar.deleteTravel('${travel.id}')">Delete</button>
                     </div>
                 </div>

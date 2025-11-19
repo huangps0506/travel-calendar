@@ -287,6 +287,15 @@ header h1 {
     background: #dc2626;
 }
 
+.btn-calendar {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-calendar:hover {
+    background: #059669;
+}
+
 /* Modal */
 .modal {
     display: none;
